@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+//OPERATOR OVERLOADING
+//11.2 RETURNING IBJECT
+class number
+{
+    private:
+    int x;
+    public:
+    number(){ x=0;}
+    number(int n){ x=n;}
+    number operator -(){number y; y.x=-x;return y;}
+    void show_data()
+    {
+        cout<<"\n x="<<x;
+    }
+};
+
+int main()
+{
+    number n(-7),n2;
+    n.show_data();
+    n2=-n;
+    n2.show_data();
+    return 0;
+}
