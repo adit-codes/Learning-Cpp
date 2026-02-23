@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+//OPERATOR OVERLOADING
+//11.1
+class number
+{
+    private:
+    int x;
+    public:
+    number(){ x=0;}
+    number(int n){ x=n;}
+    void operator -(){x=-x;}
+    void show_data()
+    {
+        cout<<"\n x="<<x;
+    }
+};
+
+int main()
+{
+    number n(7);
+    n.show_data();
+    -n;
+    n.show_data();
+    return 0;
+}
