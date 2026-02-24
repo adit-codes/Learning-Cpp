@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+class bank_customer{
+        protected:
+                int acc_no;
+                string name;
+                int balance;
+
+        public:
+                        //constructor initialiszing int variables
+                        bank_customer(int acc_no=0,string name=" ",int balance=0){this->acc_no=acc_no;this->name=name;this->balance=balance;}
+                        //display function
+                        void display()
+                        {
+                                cout<<"Name:"<<name<<endl;
+                                cout<<"ACC NO."<<acc_no<<endl;
+                                cout<<"balance"<<balance<<endl;
+                        }
+                        virtual int withdraw(int w)=0;
+};
+class type1:public bank_customer
+{
+        public:
+                type1(int acc_no,string name,int balance): bank_customer(acc_no,name,balance){}
+                int withdraw(int w) override{
+
+                        if((balance-w)>1000&&(w<=10000)) balance=balance-w;
+                        else cout<<" WARNING! EXCEEDS LIMITS";
+                        return balance;
+                }
+
+
+};
+class type2:public bank_customer
+{
+        public:
+                type2(int acc_no,string name,int balance):bank_customer(acc_no,name,balance){}
+                //overwriting withdraw
+                int withdraw(int w) override{
+                        if((balance-w)>0&&(w<=50000)) balance=balance-w;
+                        else cout<<" WARNING! EXCEEDS LIMITS"<<endl;
+                        return balance;
+                }
+};
+int main()
+{
+        int size=5,amount,id;
+        bank_customer *arr[size];
+        arr[0]= new type1(12345674,"AAA",90000);
+        arr[1]= new type1(12345675,"BBB",45000);
+        arr[2]= new type1(12345676,"CCC",30000);
+        arr[3]= new type1(12345677,"DDD",70000);
+        arr[4]= new type1(12345678,"EEE",20000);
+        for(int i=0;i<size;i++)
+        {
+                arr[i]->display();
+        }
+        cout<<"********************************"
+        cout<<"Enter customer no:";cin>>id;
+        cout<<"Enter withdrawl amount:";cin>>amount;
+        arr[id-1]->withdraw(amount);;
+        arr[id-1]->display();
+        return 0;
+}
