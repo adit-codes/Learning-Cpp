@@ -1,0 +1,46 @@
+#include <stdio.h>
+using namespace std;
+class student{
+    private:
+    string Sname;
+    int Sroll;
+    float marks[5];
+    float totalmarks;
+    char grade;
+    void calac_total()
+    {
+        for(int i=0;i<5;i++)
+        {
+            totalmarks+=marks[i];
+        }
+    }
+    void calc_grade()
+    {
+        if(totalmarks>=450) grade='A';
+        else if(totalmarks>=400) grade='B';
+        else if(totalmarks>=350) grade='C';
+        else grade='D';
+    }
+    public:
+    void accept()
+    {
+        cout<<"ENTER DETAILS"<<endl;
+        cin>>Sname>>Sroll;
+        for(int i=0;i<5;i++)
+        {
+            cin>>marks[i];
+        }
+        calc_total();
+        calc_grade();
+    }
+    void display()
+    {
+        cout<<Sname<<endl;
+        cout<<Sroll<<endl;
+        for(int i=0;i<5;i++)
+        {
+            cout<<marks[i];
+        }
+        
+    }
+}
