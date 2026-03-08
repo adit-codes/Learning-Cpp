@@ -1,0 +1,61 @@
+#include <stdio.h>
+using namespace std;
+class book{
+    string title,author,availability;
+    public:
+    //DEFAULT CONSTRUCTOR
+    book(string title="",string author="",string availability="TRUE"){}
+    //PARAMETER CONSTRUCTOR
+    book(string t,string a,string avail="TRUE"){title=t;author=a;availability=avail;}
+    //check avail friend
+    int check()
+    {
+        if (availability=="TRUE") return 1;
+        else return 0;
+    }
+    void update()
+    {
+        string action;
+        cout<<"RETURN/BORROW/NONE";
+        cin>>action;
+        if(action=="RETURN") availability="TRUE";
+        else if(action=="BORROW") availability="FALSE";
+    }
+    void print()
+    {
+        cout<<"TITLE:"<<title<<endl;
+        cout<<"AUTHOR:"<<author<<endl;
+        cout<<"AVAILABILITY:"<<availability<<endl;
+        
+    }
+    //destructor
+    ~book() {
+        cout << "Book object for '" << title << "' is being destroyed..." << endl;
+    //friend
+    friend int functioncountborrowedbooks(book b[],int n)
+    {
+        count=0;
+        for(int i=0;i<n;i++)
+        {
+            if(b[i].availability=="TRUE") count++=1;
+            
+        }
+        return count;
+    }
+};
+int main()
+{
+    int n=2;
+    book b[0]("A","a","TRUE"),b[1]("A","a","FALSE");
+    for(int i=0;i<n;i++)
+    {
+        b[i].print();
+        b[i].update();
+    }
+    cout<<functioncountborrowedbooks(b,n);
+    return 0;
+}
+    
+    
+    
+}
