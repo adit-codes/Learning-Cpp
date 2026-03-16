@@ -1,0 +1,15 @@
+//ADDING WITH TEMPLATES
+#include <bits/stdc++.h>
+using namespace std;
+template<typename t1>
+t1 add(t1 x,t1 y)
+{
+    return(x+y);
+}
+int main()
+{
+    int int_add=add(4,5);
+    float float_Add=add(4.5,5.0);
+    cout<<int_add<<endl<<float_Add<<endl;
+    return 0;
+}
